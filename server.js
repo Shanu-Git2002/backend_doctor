@@ -13,6 +13,7 @@ connectDB();
 //rest obejct
 const app = express();
 
+
 //middlewares
 app.use(express.json());
 app.use(moragan("dev"));
@@ -21,6 +22,10 @@ app.use(moragan("dev"));
 app.use("/api/v1/user", require("./routes/userRoutes"));
 app.use("/api/v1/admin", require("./routes/adminRoutes"));
 app.use("/api/v1/doctor", require("./routes/doctorRoutes"));
+
+app.get("/home", (req, res, next) => {
+    res.send("This is the homepage request")
+})
 
 //port
 const port = process.env.PORT || 8080;
